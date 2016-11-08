@@ -1,0 +1,15 @@
+PODS:
+  - BrightFutures (5.1.0):
+    - Result (~> 3.0)
+  - Result (3.0.0)
+
+DEPENDENCIES:
+  - BrightFutures
+
+SPEC CHECKSUMS:
+  BrightFutures: 62aafb1a63520eda91c9286bf4be33e58e043938
+  Result: 1b3e431f37cbcd3ad89c6aa9ab0ae55515fae3b6
+
+PODFILE CHECKSUM: ac97656d1974bdcfd5ece051660bb1f6e99f3449
+
+COCOAPODS: 1.1.1

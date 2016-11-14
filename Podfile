@@ -5,4 +5,5 @@ target 'AsyncPatterns' do
   use_frameworks!
 
   pod 'BrightFutures'
+  pod 'RxSwift',    '~> 3.0'
 end

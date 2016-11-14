@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E2A7E511DDA084C008D3B66 /* RxCheeseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A7E501DDA084C008D3B66 /* RxCheeseFactory.swift */; };
+		0E2A7E531DDA0AD9008D3B66 /* WithFuturesCheeseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A7E521DDA0AD9008D3B66 /* WithFuturesCheeseFactory.swift */; };
 		0E88D89F1DD1F25A00240EC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E88D89E1DD1F25A00240EC7 /* AppDelegate.swift */; };
 		0E88D8A11DD1F25A00240EC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E88D8A01DD1F25A00240EC7 /* ViewController.swift */; };
 		0E88D8A41DD1F25A00240EC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E88D8A21DD1F25A00240EC7 /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		023FC92ABF848675C2048BFB /* Pods-AsyncPatterns.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AsyncPatterns.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AsyncPatterns/Pods-AsyncPatterns.debug.xcconfig"; sourceTree = "<group>"; };
+		0E2A7E501DDA084C008D3B66 /* RxCheeseFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCheeseFactory.swift; sourceTree = "<group>"; };
+		0E2A7E521DDA0AD9008D3B66 /* WithFuturesCheeseFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithFuturesCheeseFactory.swift; sourceTree = "<group>"; };
 		0E88D89B1DD1F25A00240EC7 /* AsyncPatterns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsyncPatterns.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E88D89E1DD1F25A00240EC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E88D8A01DD1F25A00240EC7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +81,8 @@
 				0E88D8AA1DD1F25A00240EC7 /* Info.plist */,
 				0E88D8B01DD1F34400240EC7 /* CheeseProcess.swift */,
 				0E88D8B21DD1F77200240EC7 /* CheeseFactory.swift */,
+				0E2A7E501DDA084C008D3B66 /* RxCheeseFactory.swift */,
+				0E2A7E521DDA0AD9008D3B66 /* WithFuturesCheeseFactory.swift */,
 				0E88D8B41DD202A300240EC7 /* ProcessTableViewCell.swift */,
 				0E88D8B51DD202A300240EC7 /* ProcessTableViewCell.xib */,
 			);
@@ -225,10 +231,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E88D8B11DD1F34400240EC7 /* CheeseProcess.swift in Sources */,
+				0E2A7E511DDA084C008D3B66 /* RxCheeseFactory.swift in Sources */,
 				0E88D8A11DD1F25A00240EC7 /* ViewController.swift in Sources */,
 				0E88D89F1DD1F25A00240EC7 /* AppDelegate.swift in Sources */,
 				0E88D8B31DD1F77200240EC7 /* CheeseFactory.swift in Sources */,
 				0E88D8B61DD202A300240EC7 /* ProcessTableViewCell.swift in Sources */,
+				0E2A7E531DDA0AD9008D3B66 /* WithFuturesCheeseFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

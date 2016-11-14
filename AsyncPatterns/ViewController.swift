@@ -9,6 +9,7 @@
 import UIKit
 import BrightFutures
 import Result
+import RxSwift
 
 class ViewController: UITableViewController {
     
@@ -21,6 +22,8 @@ class ViewController: UITableViewController {
     ]
     
     var invalidationToken: InvalidationToken?
+    let disposeBag = DisposeBag()
+    var rxProcess: Disposable?
     
     var processActive:Bool = false {
         didSet {
@@ -30,6 +33,7 @@ class ViewController: UITableViewController {
             } else {
                 item = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(startAction(_:)))
                 invalidationToken?.invalidate()
+                rxProcess?.dispose()
             }
             self.navigationItem.rightBarButtonItems = [item]
         }
@@ -68,7 +72,8 @@ class ViewController: UITableViewController {
         
 //        runProcessWithCallbacks1()
 //        runProcessWithCallbacks2()
-        runProcessWithFutures()
+//        runProcessWithFutures()
+        runProcessWithRxSwift()
     }
     
     
@@ -301,7 +306,7 @@ extension ViewController {
             .andThen(context:invalidationToken.validContext, callback: sideEffect)
             .flatMap(invalidationToken.validContext) { (curdBlock) -> Future<CheeseBlock, SpoiledProductError> in
                 return factory.age(curd: curdBlock)
-        }
+            }
         
         process.onSuccess(invalidationToken.validContext) { (cheese) in
             self.updateStep(idx: step, state: .complete(success: true))
@@ -311,5 +316,58 @@ extension ViewController {
         process.onFailure { (error) in
             self.stopProcess()
         }
+    }
+    
+    //MARK: - runProcessWithFutures
+    func runProcessWithRxSwift() {
+        let factory = RxCheeseFactory()
+        
+        var step = 0
+        
+        func sideEffect<U>(_ result: U) -> Void {
+            self.updateStep(idx: step, state: .complete(success: true))
+            step += 1
+            self.updateStep(idx: step, state: .inprogress)
+        }
+        
+        
+        updateStep(idx: step, state: .inprogress)
+        
+        let process = factory.pasterise(milk: Milk(pasterised: false))
+            .do(onNext: sideEffect, onError: nil, onCompleted: nil, onSubscribe: nil, onDispose: nil)
+            .flatMap { (milk) -> Observable<(Curd, Whey)> in
+                return factory.inoculate(milk: milk, bacteria: Bacteria())
+            }
+            .do(onNext: sideEffect, onError: nil, onCompleted: nil, onSubscribe: nil, onDispose: nil)
+            .flatMap { (product) -> Observable<(CurdBlock, Whey)> in
+                return factory.texture(curd: product.0)
+            }
+            .do(onNext: sideEffect, onError: nil, onCompleted: nil, onSubscribe: nil, onDispose: nil)
+            .flatMap { (product) -> Observable<CurdBlock> in
+                return factory.salt(curd: product.0)
+            }
+            .do(onNext: sideEffect, onError: nil, onCompleted: nil, onSubscribe: nil, onDispose: nil)
+            .flatMap { (curdBlock) -> Observable<CheeseBlock> in
+                    return factory.age(curd: curdBlock)
+            }
+        
+        
+        
+        rxProcess = process.subscribe(onNext: { _ in
+            self.updateStep(idx: step, state: .complete(success: true))
+            step += 1
+            self.processSuccess()
+        }, onError: { (erorr) in
+            self.stopProcess()
+        }, onCompleted:{
+            print("Complete, what is it?")
+        }, onDisposed: {
+            guard step<self.process.count else {
+                return
+            }
+            self.updateStep(idx: step, state: .cancelled)
+        })
+            
+        rxProcess?.addDisposableTo(disposeBag)
     }
 }

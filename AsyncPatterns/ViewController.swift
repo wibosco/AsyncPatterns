@@ -24,6 +24,7 @@ class ViewController: UITableViewController {
     var invalidationToken: InvalidationToken?
     let disposeBag = DisposeBag()
     var rxProcess: Disposable?
+    var queue: OperationQueue?
     
     var processActive:Bool = false {
         didSet {
@@ -74,6 +75,7 @@ class ViewController: UITableViewController {
 //        runProcessWithCallbacks2()
 //        runProcessWithFutures()
         runProcessWithRxSwift()
+//        runProcessWithQueue()
     }
     
     
@@ -369,5 +371,59 @@ extension ViewController {
         })
             
         rxProcess?.addDisposableTo(disposeBag)
+    }
+    
+    // MARK: - runProcessWithQueue
+    
+    func runProcessWithQueue() {
+        queue = OperationQueue()
+        
+        updateStep(idx: CheeseProductionStep.pasterise.rawValue, state: .inprogress)
+        let progress = { (cheeseProductionStep: CheeseProductionStep, error: SpoiledProductError?) in
+            if error != nil {
+                self.stopProcess()
+            } else {
+                self.updateStep(idx: cheeseProductionStep.rawValue, state: .complete(success: true))
+                self.updateStep(idx: cheeseProductionStep.rawValue+1, state: .inprogress)
+            }
+            
+//            switch cheeseProductionStep {
+//            case .pasterise:
+//                if error != nil {
+//                    self.stopProcess()
+//                } else {
+//                    self.updateStep(idx: cheeseProductionStep.rawValue, state: .complete(success: true))
+//                }
+//            case .inoculate:
+//                if error != nil {
+//                    self.stopProcess()
+//                    
+//                    //self.updateStep(idx: cheeseProductionStep.rawValue, state: .complete(success: false))
+//                }
+//            case .salt:
+//                if error != nil {
+//                    self.updateStep(idx: cheeseProductionStep.rawValue, state: .complete(success: false))
+//                }
+//            case .texture:
+//                if error != nil {
+//                    self.updateStep(idx: cheeseProductionStep.rawValue, state: .complete(success: false))
+//                }
+//            case .curdAge:
+//                if error != nil {
+//                    self.updateStep(idx: cheeseProductionStep.rawValue, state: .complete(success: false))
+//                }
+//            case .cheeseAge:
+//                if error != nil {
+//                    self.updateStep(idx: cheeseProductionStep.rawValue, state: .complete(success: false))
+//                }
+//            }
+        }
+        
+        let completion = { (cheese: CheeseBlock) in
+            self.processSuccess()
+        }
+        
+        let operation = CheeseOperation(progress: progress, completion: completion)
+        queue?.addOperation(operation)
     }
 }

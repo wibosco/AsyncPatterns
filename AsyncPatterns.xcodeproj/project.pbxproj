@@ -19,6 +19,7 @@
 		0E88D8B61DD202A300240EC7 /* ProcessTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E88D8B41DD202A300240EC7 /* ProcessTableViewCell.swift */; };
 		0E88D8B71DD202A300240EC7 /* ProcessTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E88D8B51DD202A300240EC7 /* ProcessTableViewCell.xib */; };
 		5D7CC1601EB1C09295D1D4D5 /* Pods_AsyncPatterns.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E1987FDE1E41CB885B7888F /* Pods_AsyncPatterns.framework */; };
+		91F1C0201E02EC4700CA2822 /* CheeseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F1C01F1E02EC4700CA2822 /* CheeseOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		0E88D8B51DD202A300240EC7 /* ProcessTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProcessTableViewCell.xib; sourceTree = "<group>"; };
 		6849AAA44F13ED770D747CC8 /* Pods-AsyncPatterns.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AsyncPatterns.release.xcconfig"; path = "Pods/Target Support Files/Pods-AsyncPatterns/Pods-AsyncPatterns.release.xcconfig"; sourceTree = "<group>"; };
 		7E1987FDE1E41CB885B7888F /* Pods_AsyncPatterns.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AsyncPatterns.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		91F1C01F1E02EC4700CA2822 /* CheeseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheeseOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				0E2A7E521DDA0AD9008D3B66 /* WithFuturesCheeseFactory.swift */,
 				0E88D8B41DD202A300240EC7 /* ProcessTableViewCell.swift */,
 				0E88D8B51DD202A300240EC7 /* ProcessTableViewCell.xib */,
+				91F1C01F1E02EC4700CA2822 /* CheeseOperation.swift */,
 			);
 			path = AsyncPatterns;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				0E88D89F1DD1F25A00240EC7 /* AppDelegate.swift in Sources */,
 				0E88D8B31DD1F77200240EC7 /* CheeseFactory.swift in Sources */,
 				0E88D8B61DD202A300240EC7 /* ProcessTableViewCell.swift in Sources */,
+				91F1C0201E02EC4700CA2822 /* CheeseOperation.swift in Sources */,
 				0E2A7E531DDA0AD9008D3B66 /* WithFuturesCheeseFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
